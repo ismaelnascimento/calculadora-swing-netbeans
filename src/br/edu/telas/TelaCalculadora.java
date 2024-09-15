@@ -75,259 +75,238 @@ public class TelaCalculadora extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        CalculadoraMenu.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
         TelaNormal.setBackground(new java.awt.Color(255, 255, 255));
         TelaNormal.setOpaque(false);
         TelaNormal.setPreferredSize(new java.awt.Dimension(400, 450));
 
         inputCalculator.setEditable(false);
-        inputCalculator.setFont(new java.awt.Font("Dialog", 1, 32)); // NOI18N
+        inputCalculator.setFont(new java.awt.Font("Segoe UI", 1, 32)); // NOI18N
         inputCalculator.setForeground(new java.awt.Color(255, 255, 255));
         inputCalculator.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         inputCalculator.setText("0");
 
-        btnDEL.setBackground(new java.awt.Color(29, 28, 28));
-        btnDEL.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        btnDEL.setBackground(new java.awt.Color(51, 51, 51));
+        btnDEL.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnDEL.setForeground(new java.awt.Color(255, 255, 255));
         btnDEL.setText("DEL");
         btnDEL.setBorder(null);
         btnDEL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnDEL.setSelected(true);
         btnDEL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDELActionPerformed(evt);
             }
         });
 
-        btnAC.setBackground(new java.awt.Color(29, 28, 28));
-        btnAC.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        btnAC.setBackground(new java.awt.Color(51, 51, 51));
+        btnAC.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnAC.setForeground(new java.awt.Color(255, 255, 255));
         btnAC.setText("AC");
         btnAC.setBorder(null);
         btnAC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAC.setSelected(true);
         btnAC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnACActionPerformed(evt);
             }
         });
 
-        btnPerc.setBackground(new java.awt.Color(29, 28, 28));
-        btnPerc.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        btnPerc.setBackground(new java.awt.Color(51, 51, 51));
+        btnPerc.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnPerc.setForeground(new java.awt.Color(255, 255, 255));
         btnPerc.setText("%");
         btnPerc.setBorder(null);
         btnPerc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnPerc.setSelected(true);
         btnPerc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPercActionPerformed(evt);
             }
         });
 
-        btnDiv.setBackground(new java.awt.Color(29, 28, 28));
-        btnDiv.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        btnDiv.setBackground(new java.awt.Color(51, 51, 51));
+        btnDiv.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnDiv.setForeground(new java.awt.Color(255, 255, 255));
         btnDiv.setText("÷");
         btnDiv.setBorder(null);
         btnDiv.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnDiv.setSelected(true);
         btnDiv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDivActionPerformed(evt);
             }
         });
 
-        btn7.setBackground(new java.awt.Color(29, 28, 28));
-        btn7.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        btn7.setBackground(new java.awt.Color(51, 51, 51));
+        btn7.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btn7.setForeground(new java.awt.Color(255, 255, 255));
         btn7.setText("7");
         btn7.setBorder(null);
         btn7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn7.setSelected(true);
         btn7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn7ActionPerformed(evt);
             }
         });
 
-        btn8.setBackground(new java.awt.Color(29, 28, 28));
-        btn8.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        btn8.setBackground(new java.awt.Color(51, 51, 51));
+        btn8.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btn8.setForeground(new java.awt.Color(255, 255, 255));
         btn8.setText("8");
         btn8.setBorder(null);
         btn8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn8.setSelected(true);
         btn8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn8ActionPerformed(evt);
             }
         });
 
-        btn9.setBackground(new java.awt.Color(29, 28, 28));
-        btn9.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        btn9.setBackground(new java.awt.Color(51, 51, 51));
+        btn9.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btn9.setForeground(new java.awt.Color(255, 255, 255));
         btn9.setText("9");
         btn9.setBorder(null);
         btn9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn9.setSelected(true);
         btn9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn9ActionPerformed(evt);
             }
         });
 
-        btnMenos.setBackground(new java.awt.Color(29, 28, 28));
-        btnMenos.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        btnMenos.setBackground(new java.awt.Color(51, 51, 51));
+        btnMenos.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnMenos.setForeground(new java.awt.Color(255, 255, 255));
         btnMenos.setText("-");
         btnMenos.setBorder(null);
         btnMenos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnMenos.setSelected(true);
         btnMenos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenosActionPerformed(evt);
             }
         });
 
-        btn4.setBackground(new java.awt.Color(29, 28, 28));
-        btn4.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        btn4.setBackground(new java.awt.Color(51, 51, 51));
+        btn4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btn4.setForeground(new java.awt.Color(255, 255, 255));
         btn4.setText("4");
         btn4.setBorder(null);
         btn4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn4.setSelected(true);
         btn4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn4ActionPerformed(evt);
             }
         });
 
-        btnMais.setBackground(new java.awt.Color(29, 28, 28));
-        btnMais.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        btnMais.setBackground(new java.awt.Color(51, 51, 51));
+        btnMais.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnMais.setForeground(new java.awt.Color(255, 255, 255));
         btnMais.setText("+");
         btnMais.setBorder(null);
         btnMais.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnMais.setSelected(true);
         btnMais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMaisActionPerformed(evt);
             }
         });
 
-        btn5.setBackground(new java.awt.Color(29, 28, 28));
-        btn5.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        btn5.setBackground(new java.awt.Color(51, 51, 51));
+        btn5.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btn5.setForeground(new java.awt.Color(255, 255, 255));
         btn5.setText("5");
         btn5.setBorder(null);
         btn5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn5.setSelected(true);
         btn5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn5ActionPerformed(evt);
             }
         });
 
-        btn6.setBackground(new java.awt.Color(29, 28, 28));
-        btn6.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        btn6.setBackground(new java.awt.Color(51, 51, 51));
+        btn6.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btn6.setForeground(new java.awt.Color(255, 255, 255));
         btn6.setText("6");
         btn6.setBorder(null);
         btn6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn6.setSelected(true);
         btn6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn6ActionPerformed(evt);
             }
         });
 
-        btn1.setBackground(new java.awt.Color(29, 28, 28));
-        btn1.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        btn1.setBackground(new java.awt.Color(51, 51, 51));
+        btn1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btn1.setForeground(new java.awt.Color(255, 255, 255));
         btn1.setText("1");
         btn1.setBorder(null);
         btn1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn1.setSelected(true);
         btn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn1ActionPerformed(evt);
             }
         });
 
-        btn2.setBackground(new java.awt.Color(29, 28, 28));
-        btn2.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        btn2.setBackground(new java.awt.Color(51, 51, 51));
+        btn2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btn2.setForeground(new java.awt.Color(255, 255, 255));
         btn2.setText("2");
         btn2.setBorder(null);
         btn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn2.setSelected(true);
         btn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn2ActionPerformed(evt);
             }
         });
 
-        btn3.setBackground(new java.awt.Color(29, 28, 28));
-        btn3.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        btn3.setBackground(new java.awt.Color(51, 51, 51));
+        btn3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btn3.setForeground(new java.awt.Color(255, 255, 255));
         btn3.setText("3");
         btn3.setBorder(null);
         btn3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn3.setSelected(true);
         btn3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn3ActionPerformed(evt);
             }
         });
 
-        btn0.setBackground(new java.awt.Color(29, 28, 28));
-        btn0.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        btn0.setBackground(new java.awt.Color(51, 51, 51));
+        btn0.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btn0.setForeground(new java.awt.Color(255, 255, 255));
         btn0.setText("0");
         btn0.setBorder(null);
         btn0.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn0.setSelected(true);
         btn0.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn0ActionPerformed(evt);
             }
         });
 
-        btnIgual.setBackground(new java.awt.Color(51, 51, 51));
-        btnIgual.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        btnIgual.setBackground(new java.awt.Color(102, 102, 102));
+        btnIgual.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnIgual.setForeground(new java.awt.Color(255, 255, 255));
         btnIgual.setText("=");
         btnIgual.setBorder(null);
         btnIgual.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnIgual.setSelected(true);
         btnIgual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIgualActionPerformed(evt);
             }
         });
 
-        btnPonto.setBackground(new java.awt.Color(29, 28, 28));
-        btnPonto.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        btnPonto.setBackground(new java.awt.Color(51, 51, 51));
+        btnPonto.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnPonto.setForeground(new java.awt.Color(255, 255, 255));
         btnPonto.setText(",");
         btnPonto.setBorder(null);
         btnPonto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnPonto.setSelected(true);
         btnPonto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPontoActionPerformed(evt);
             }
         });
 
-        btnMulti.setBackground(new java.awt.Color(29, 28, 28));
-        btnMulti.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        btnMulti.setBackground(new java.awt.Color(51, 51, 51));
+        btnMulti.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnMulti.setForeground(new java.awt.Color(255, 255, 255));
         btnMulti.setText("×");
         btnMulti.setBorder(null);
         btnMulti.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnMulti.setSelected(true);
         btnMulti.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMultiActionPerformed(evt);
@@ -452,7 +431,6 @@ public class TelaCalculadora extends javax.swing.JFrame {
         CalculadoraMenu.addTab("IMC", TelaIMC);
 
         btnSobre.setText("Sobre");
-        btnSobre.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         btnSobre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSobreMouseClicked(evt);
@@ -461,7 +439,6 @@ public class TelaCalculadora extends javax.swing.JFrame {
         MenuBar.add(btnSobre);
 
         btnAjuda.setText("Ajuda");
-        btnAjuda.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         btnAjuda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAjudaMouseClicked(evt);
@@ -470,7 +447,6 @@ public class TelaCalculadora extends javax.swing.JFrame {
         MenuBar.add(btnAjuda);
 
         btnHistorico.setText("Histórico");
-        btnHistorico.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         btnHistorico.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnHistoricoMouseClicked(evt);
@@ -514,7 +490,7 @@ public class TelaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPontoActionPerformed
 
     private void btnIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIgualActionPerformed
-        calculadoraNormal.onClickResult(evt, () -> setEnabledIfDivZero(false));
+        calculadoraNormal.onClickResult(evt, () -> setEnabledIfDivZero(false), () -> setEnabledIfDivZero(true));
     }//GEN-LAST:event_btnIgualActionPerformed
 
     private void btn0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn0ActionPerformed

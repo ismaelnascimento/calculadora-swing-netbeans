@@ -18,6 +18,7 @@ public class CalculadoraNormal {
     private javax.swing.JTextField display;
     protected double num1;
     protected double num2;
+    protected Boolean selectNum2 = false;
     protected double res;
     protected String symbol;
     protected ArrayList<String> history = new ArrayList<String>();
@@ -69,6 +70,7 @@ public class CalculadoraNormal {
         }
         if (!display.getText().replaceAll(" ", "").equals("")) {
             num1 = Double.parseDouble(display.getText().replace(",", "."));
+            selectNum2 = false;
         }
         display.setText("");
         symbol = e.getActionCommand();
@@ -91,9 +93,14 @@ public class CalculadoraNormal {
         display.setText(num);
     }
 
-    public void onClickResult(java.awt.event.ActionEvent e, Runnable setEnabledIfDivZero) {
-        if (!display.getText().replaceAll(" ", "").equals("")) {
-            num2 = Double.parseDouble(display.getText().replace(",", "."));
+    public void onClickResult(java.awt.event.ActionEvent e, Runnable setEnabledIfDivZero, Runnable setEnabledIfDivZeroTrue) {
+        if (!display.getText().replaceAll(" ", "").equals("") && !display.getText().equals(isNotDivZero)) {
+            if (selectNum2) {
+                num1 = Double.parseDouble(display.getText().replace(",", "."));
+            } else {
+                num2 = Double.parseDouble(display.getText().replace(",", "."));
+                selectNum2 = true;
+            }
 
             if (symbol != null) {
                 switch (symbol) {
@@ -107,7 +114,7 @@ public class CalculadoraNormal {
                         res = num1 * num2;
                         break;
                     case "÷":
-                        if ((int) num2 == 0) {
+                        if (selectNum2 && (int) num2 == 0) {
                             display.setText(isNotDivZero);
                             display.setFont(new Font("Dialog", Font.BOLD, 18));
                             setEnabledIfDivZero.run();
@@ -121,7 +128,6 @@ public class CalculadoraNormal {
                     default:
                         res = 0.0;
                 }
-
                 if (!display.getText().equals(isNotDivZero)) {
                     String result = String.format("%.2f", res);
                     if (result.substring(result.length() - 2, result.length()).equals("00")) {
@@ -130,8 +136,15 @@ public class CalculadoraNormal {
                     display.setText(result);
                     history.add(num1 + " " + symbol + " " + num2 + " = " + res);
                 }
+
             }
 
+        } else {
+            setEnabledIfDivZeroTrue.run();
+            resetButtonsEnabledDisplayFont();
+            num1 = 0;
+            num2 = 0;
+            symbol = "";
         }
 
     }
