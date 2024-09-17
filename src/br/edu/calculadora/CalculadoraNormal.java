@@ -30,7 +30,25 @@ public class CalculadoraNormal {
         display.setFont(new Font("Dialog", Font.BOLD, 32));
     }
 
+    public void onChangeDisplay() {
+        if (display.getText().length() > 16) {
+            boolean ended = false;
+            double variable_test;
+            int x = 16;
+
+            while (ended == false) {
+                variable_test = Double.parseDouble(display.getText());
+                if ((variable_test / Math.pow(10, x) < 10) || (variable_test / Math.pow(10, x) > 1)) {
+                    variable_test = variable_test / Math.pow(10, x);
+                    display.setText(variable_test + "x10^" + x);
+                    ended = true;
+                }
+            }
+        }
+    }
+
     public void onClickNumber(java.awt.event.ActionEvent e, Runnable setEnabledIfDivZero) {
+        onChangeDisplay();
         if (display.getText().equals(isNotDivZero)) {
             setEnabledIfDivZero.run();
             resetButtonsEnabledDisplayFont();

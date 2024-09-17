@@ -84,6 +84,13 @@ public class TelaCalculadora extends javax.swing.JFrame {
         inputCalculator.setForeground(new java.awt.Color(255, 255, 255));
         inputCalculator.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         inputCalculator.setText("0");
+        inputCalculator.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                inputCalculatorInputMethodTextChanged(evt);
+            }
+        });
 
         btnDEL.setBackground(new java.awt.Color(51, 51, 51));
         btnDEL.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -571,6 +578,10 @@ public class TelaCalculadora extends javax.swing.JFrame {
         TelaSobre telaSobre = new TelaSobre(this, true);
         telaSobre.setVisible(true);
     }//GEN-LAST:event_btnSobreMouseClicked
+
+    private void inputCalculatorInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_inputCalculatorInputMethodTextChanged
+
+    }//GEN-LAST:event_inputCalculatorInputMethodTextChanged
 
     /**
      * @param args the command line arguments
