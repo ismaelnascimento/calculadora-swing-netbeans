@@ -1,8 +1,14 @@
 package br.edu.calculadora;
 
+import br.edu.calculadora.telas.TelaCalculadora;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /*
@@ -22,143 +28,196 @@ public class CalculadoraNormal {
     protected double res;
     protected String symbol;
     protected ArrayList<String> history = new ArrayList<String>();
+    protected TelaCalculadora telaCalculadora;
 
     public String isNotDivZero = "Não é possivel dividir por 0";
 
+    public String getDisplayText() {
+        return display.getText();
+    }
+
+    public void setDisplayText(String str) {
+        display.setText(str);
+    }
+
     public void resetButtonsEnabledDisplayFont() {
-        display.setText("0");
+        setDisplayText("0");
         display.setFont(new Font("Dialog", Font.BOLD, 32));
     }
 
     public void onChangeDisplay() {
-        if (display.getText().length() > 16) {
-            boolean ended = false;
-            double variable_test;
-            int x = 16;
+        try {
+            if (getDisplayText().length() > 16) {
+                String displayText = getDisplayText().replace(",", ".");
 
-            while (ended == false) {
-                variable_test = Double.parseDouble(display.getText());
-                if ((variable_test / Math.pow(10, x) < 10) || (variable_test / Math.pow(10, x) > 1)) {
-                    variable_test = variable_test / Math.pow(10, x);
-                    display.setText(variable_test + "x10^" + x);
-                    ended = true;
+                BigDecimal number = new BigDecimal(displayText);
+
+                if (number.compareTo(BigDecimal.ZERO) != 0) {
+                    int exponent = number.precision() - number.scale() - 1;
+                    BigDecimal scientificNumber = number.movePointLeft(exponent).setScale(2, RoundingMode.HALF_UP);
+                    setDisplayText(scientificNumber + "x10^" + exponent);
                 }
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Erro ao converter número: " + e.getMessage());
+        }
+    }
+
+    public double tranformNumToScientificNotation(String input) {
+        Pattern pattern = Pattern.compile("([\\d\\.]+)x10\\^(-?\\d+)");
+        Matcher matcher = pattern.matcher(input);
+
+        if (matcher.matches()) {
+            BigDecimal base = new BigDecimal(matcher.group(1));
+            int exponent = Integer.parseInt(matcher.group(2));
+            return base.movePointRight(exponent).doubleValue();
+        }
+
+        return Double.parseDouble(input.replace(",", "."));
+    }
+
+    public void onClickNumber(java.awt.event.ActionEvent e) {
+        if (getDisplayText().equals(isNotDivZero)) {
+            telaCalculadora.setEnabledIfDivZero(true);
+            resetButtonsEnabledDisplayFont();
+        } else {
+            if (getDisplayText().length() < 16) {
+                String num;
+                if (getDisplayText().equals("0")) {
+                    num = e.getActionCommand();
+                } else {
+                    num = getDisplayText() + e.getActionCommand();
+                }
+                setDisplayText(num);
+                onChangeDisplay();
+            }
+
+        }
+
+    }
+
+    public void onClickDelete() {
+        if (getDisplayText().equals(isNotDivZero)) {
+            telaCalculadora.setEnabledIfDivZero(true);
+            resetButtonsEnabledDisplayFont();
+        } else {
+            String num = getDisplayText();
+            if (!num.equals("")) {
+                setDisplayText(num.length() == 1 ? "0" : num.substring(0, num.length() - 1));
             }
         }
     }
 
-    public void onClickNumber(java.awt.event.ActionEvent e, Runnable setEnabledIfDivZero) {
-        onChangeDisplay();
-        if (display.getText().equals(isNotDivZero)) {
-            setEnabledIfDivZero.run();
-            resetButtonsEnabledDisplayFont();
-        }
-        String num;
-        if (display.getText().equals("0")) {
-            num = e.getActionCommand();
-        } else {
-            num = display.getText() + e.getActionCommand();
-        }
-        display.setText(num);
-    }
-
-    public void onClickDelete(Runnable setEnabledIfDivZero) {
-        if (display.getText().equals(isNotDivZero)) {
-            setEnabledIfDivZero.run();
-            resetButtonsEnabledDisplayFont();
-        }
-        String num = display.getText();
-        display.setText(num.length() == 1 ? "0" : num.substring(0, num.length() - 1));
-    }
-
-    public void onClickAC(Runnable setEnabledIfDivZero) {
-        if (display.getText().equals(isNotDivZero)) {
-            setEnabledIfDivZero.run();
+    public void onClickAC() {
+        if (getDisplayText().equals(isNotDivZero)) {
+            telaCalculadora.setEnabledIfDivZero(true);
             resetButtonsEnabledDisplayFont();
         }
         num1 = 0;
         num2 = 0;
+        setDisplayText("0");
         display.setText("0");
     }
 
-    public void onClickOperator(java.awt.event.ActionEvent e, Runnable setEnabledIfDivZero) {
-        if (display.getText().equals(isNotDivZero)) {
-            setEnabledIfDivZero.run();
+    public void onClickOperator(java.awt.event.ActionEvent e) {
+        if (getDisplayText().equals(isNotDivZero)) {
+            telaCalculadora.setEnabledIfDivZero(true);
             resetButtonsEnabledDisplayFont();
-        }
-        if (!display.getText().replaceAll(" ", "").equals("")) {
-            num1 = Double.parseDouble(display.getText().replace(",", "."));
-            selectNum2 = false;
-        }
-        display.setText("");
-        symbol = e.getActionCommand();
-    }
-
-    public void onClickPoint(java.awt.event.ActionEvent e, Runnable setEnabledIfDivZero) {
-        if (display.getText().equals(isNotDivZero)) {
-            setEnabledIfDivZero.run();
-            resetButtonsEnabledDisplayFont();
-        }
-        String num = "";
-        if (display.getText().replaceAll(" ", "").equals("")) {
-            num = "0,";
-        } else if (!display.getText().contains(",")) {
-            num = display.getText() + e.getActionCommand();
         } else {
-            num = display.getText();
+            if (!getDisplayText().replaceAll(" ", "").equals("")) {
+                String displayText = getDisplayText().replace(",", ".");
+                num1 = tranformNumToScientificNotation(displayText);
+                selectNum2 = false;
+            }
+            setDisplayText("");
+            symbol = e.getActionCommand();
         }
 
-        display.setText(num);
     }
 
-    public void onClickResult(java.awt.event.ActionEvent e, Runnable setEnabledIfDivZero, Runnable setEnabledIfDivZeroTrue) {
-        if (!display.getText().replaceAll(" ", "").equals("") && !display.getText().equals(isNotDivZero)) {
-            if (selectNum2) {
-                num1 = Double.parseDouble(display.getText().replace(",", "."));
+    public void onClickPoint(java.awt.event.ActionEvent e) {
+        if (getDisplayText().equals(isNotDivZero)) {
+            telaCalculadora.setEnabledIfDivZero(true);
+            resetButtonsEnabledDisplayFont();
+        } else {
+            onChangeDisplay();
+            String num = "";
+            if (getDisplayText().replaceAll(" ", "").equals("")) {
+                num = "0,";
+            } else if (!getDisplayText().contains(",")) {
+                num = getDisplayText() + e.getActionCommand();
             } else {
-                num2 = Double.parseDouble(display.getText().replace(",", "."));
+                num = getDisplayText();
+            }
+
+            setDisplayText(num);
+        }
+
+    }
+
+    public void onClickResult(java.awt.event.ActionEvent e) {
+        if (!getDisplayText().replaceAll(" ", "").equals("") && !getDisplayText().equals(isNotDivZero) && symbol != null) {
+            String displayText = getDisplayText().replace(",", ".");
+
+            if (selectNum2) {
+                num1 = tranformNumToScientificNotation(displayText);
+            } else {
+                num2 = tranformNumToScientificNotation(displayText);
                 selectNum2 = true;
             }
 
-            if (symbol != null) {
-                switch (symbol) {
-                    case "+":
-                        res = num1 + num2;
-                        break;
-                    case "-":
-                        res = num1 - num2;
-                        break;
-                    case "×":
-                        res = num1 * num2;
-                        break;
-                    case "÷":
+            switch (symbol) {
+                case "+":
+                    res = num1 + num2;
+                    break;
+                case "-":
+                    res = num1 - num2;
+                    break;
+                case "×":
+                    res = num1 * num2;
+                    break;
+                case "÷":
+                    try {
                         if (selectNum2 && (int) num2 == 0) {
+                            setDisplayText(isNotDivZero);
                             display.setText(isNotDivZero);
                             display.setFont(new Font("Dialog", Font.BOLD, 18));
-                            setEnabledIfDivZero.run();
+                            telaCalculadora.setEnabledIfDivZero(false);
                         } else {
                             res = num1 / num2;
                         }
-                        break;
-                    case "%":
-                        res = (num1 * num2) / 100.0;
-                        break;
-                    default:
-                        res = 0.0;
-                }
-                if (!display.getText().equals(isNotDivZero)) {
-                    String result = String.format("%.2f", res);
-                    if (result.substring(result.length() - 2, result.length()).equals("00")) {
-                        result = String.format("%.0f", res);
+                    } catch (ArithmeticException err) {
+                        setDisplayText(isNotDivZero);
+                        display.setText(isNotDivZero);
+                        display.setFont(new Font("Dialog", Font.BOLD, 18));
+                        telaCalculadora.setEnabledIfDivZero(false);
+                        err.printStackTrace();
                     }
-                    display.setText(result);
+                    break;
+                case "%":
+                    res = (num1 * num2) / 100.0;
+                    break;
+                default:
+                    res = 0.0;
+            }
+            if (!getDisplayText().equals(isNotDivZero)) {
+                String result = String.format("%.2f", res);
+                if (result.endsWith("00")) {
+                    result = String.format("%.0f", res);
+                }
+                if (result.length() > 16) {
+                    setDisplayText(result);
+                    onChangeDisplay();
+                } else {
+                    setDisplayText(result);
+                }
+                if (!symbol.equals("")) {
                     history.add(num1 + " " + symbol + " " + num2 + " = " + res);
                 }
-
             }
 
         } else {
-            setEnabledIfDivZeroTrue.run();
+            telaCalculadora.setEnabledIfDivZero(true);
             resetButtonsEnabledDisplayFont();
             num1 = 0;
             num2 = 0;
@@ -198,6 +257,10 @@ public class CalculadoraNormal {
 
     public ArrayList<String> getHistory() {
         return history;
+    }
+
+    public void setTelaCalculadora(TelaCalculadora telaCalculadora) {
+        this.telaCalculadora = telaCalculadora;
     }
 
     public void setDisplay(javax.swing.JTextField display) {
