@@ -259,6 +259,10 @@ public class CalculadoraNormal {
         return history;
     }
 
+    public void setHistory(ArrayList<String> history) {
+        this.history = history;
+    }
+
     public void setTelaCalculadora(TelaCalculadora telaCalculadora) {
         this.telaCalculadora = telaCalculadora;
     }

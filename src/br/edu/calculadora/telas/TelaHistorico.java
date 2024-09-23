@@ -56,9 +56,10 @@ public class TelaHistorico extends JDialog {
             }
         });
 
-        notHistorico.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        notHistorico.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         notHistorico.setText("Ainda não há histórico");
 
+        clean.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         clean.setText("Limpar histórico");
         clean.setToolTipText("");
         clean.addActionListener(new java.awt.event.ActionListener() {
@@ -70,7 +71,7 @@ public class TelaHistorico extends JDialog {
         scroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         panelList.setBorder(null);
-        panelList.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        panelList.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         scroll.setViewportView(panelList);
 
         javax.swing.GroupLayout panelHistoricoLayout = new javax.swing.GroupLayout(panelHistorico);
@@ -127,7 +128,6 @@ public class TelaHistorico extends JDialog {
 
         for (String itemHistory : history) {
             list.addElement(itemHistory);
-
         }
         panelList.setModel(list);
         panelList.revalidate();

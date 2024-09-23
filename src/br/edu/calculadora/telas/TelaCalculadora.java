@@ -10,6 +10,8 @@ import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -65,7 +67,17 @@ public class TelaCalculadora extends javax.swing.JFrame {
         btnIgual = new javax.swing.JButton();
         btnPonto = new javax.swing.JButton();
         btnMulti = new javax.swing.JButton();
-        TelaIMC = new javax.swing.JTabbedPane();
+        TelaIMC = new javax.swing.JPanel();
+        AlturamjLabel = new javax.swing.JLabel();
+        alturamjTextField = new javax.swing.JTextField();
+        PesokgjLabel = new javax.swing.JLabel();
+        pesokgjTextField = new javax.swing.JTextField();
+        IMCjLabel = new javax.swing.JLabel();
+        imcjTextField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        calcularimcjButton = new javax.swing.JButton();
+        limparjButton2 = new javax.swing.JButton();
+        faixapesojLabel = new javax.swing.JLabel();
         MenuBar = new javax.swing.JMenuBar();
         btnSobre = new javax.swing.JMenu();
         btnAjuda = new javax.swing.JMenu();
@@ -362,7 +374,7 @@ public class TelaCalculadora extends javax.swing.JFrame {
                         .addGroup(TelaNormalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnIgual, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnMais, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         TelaNormalLayout.setVerticalGroup(
             TelaNormalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -402,7 +414,7 @@ public class TelaCalculadora extends javax.swing.JFrame {
                         .addComponent(btn0, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnPonto, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnIgual, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         btnDEL.putClientProperty(FlatClientProperties.STYLE, "arc: 12");
@@ -426,6 +438,166 @@ public class TelaCalculadora extends javax.swing.JFrame {
         btnMulti.putClientProperty(FlatClientProperties.STYLE, "arc: 12");
 
         CalculadoraMenu.addTab("Calculadora Normal", TelaNormal);
+
+        TelaIMC.setForeground(new java.awt.Color(255, 255, 255));
+        TelaIMC.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        TelaIMC.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                TelaIMCComponentShown(evt);
+            }
+        });
+
+        AlturamjLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        AlturamjLabel.setForeground(new java.awt.Color(255, 255, 255));
+        AlturamjLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        AlturamjLabel.setText("Altura(m)");
+
+        alturamjTextField.setBackground(new java.awt.Color(0, 0, 0));
+        alturamjTextField.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        alturamjTextField.setForeground(new java.awt.Color(255, 255, 255));
+        alturamjTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        alturamjTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alturamjTextFieldActionPerformed(evt);
+            }
+        });
+
+        PesokgjLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        PesokgjLabel.setForeground(new java.awt.Color(255, 255, 255));
+        PesokgjLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        PesokgjLabel.setText("Peso(kg)");
+
+        pesokgjTextField.setBackground(new java.awt.Color(0, 0, 0));
+        pesokgjTextField.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        pesokgjTextField.setForeground(new java.awt.Color(255, 255, 255));
+        pesokgjTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        pesokgjTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pesokgjTextFieldActionPerformed(evt);
+            }
+        });
+
+        IMCjLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        IMCjLabel.setForeground(new java.awt.Color(255, 255, 255));
+        IMCjLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        IMCjLabel.setText("IMC");
+
+        imcjTextField.setEditable(false);
+        imcjTextField.setBackground(new java.awt.Color(0, 0, 0));
+        imcjTextField.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        imcjTextField.setForeground(new java.awt.Color(255, 255, 255));
+        imcjTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        imcjTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imcjTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("<html><p style=\"text-align: center;\">Informe a altura em metros e o seu peso quilogramas(kg)</p></html>");
+
+        calcularimcjButton.setBackground(new java.awt.Color(51, 51, 51));
+        calcularimcjButton.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        calcularimcjButton.setForeground(new java.awt.Color(255, 255, 255));
+        calcularimcjButton.setText("Calcular IMC");
+        calcularimcjButton.setBorder(null);
+        calcularimcjButton.setBorderPainted(false);
+        calcularimcjButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        calcularimcjButton.setOpaque(false);
+        calcularimcjButton.setSelected(true);
+        calcularimcjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calcularimcjButtonActionPerformed(evt);
+            }
+        });
+
+        limparjButton2.setBackground(new java.awt.Color(51, 51, 51));
+        limparjButton2.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        limparjButton2.setForeground(new java.awt.Color(255, 255, 255));
+        limparjButton2.setText("Limpar");
+        limparjButton2.setBorder(null);
+        limparjButton2.setBorderPainted(false);
+        limparjButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        limparjButton2.setPreferredSize(new java.awt.Dimension(78, 19));
+        limparjButton2.setSelected(true);
+        limparjButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limparjButton2ActionPerformed(evt);
+            }
+        });
+
+        faixapesojLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        faixapesojLabel.setForeground(new java.awt.Color(255, 255, 255));
+        faixapesojLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout TelaIMCLayout = new javax.swing.GroupLayout(TelaIMC);
+        TelaIMC.setLayout(TelaIMCLayout);
+        TelaIMCLayout.setHorizontalGroup(
+            TelaIMCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TelaIMCLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(TelaIMCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(faixapesojLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(TelaIMCLayout.createSequentialGroup()
+                        .addComponent(calcularimcjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(limparjButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(10, Short.MAX_VALUE))
+            .addGroup(TelaIMCLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(TelaIMCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(TelaIMCLayout.createSequentialGroup()
+                        .addGroup(TelaIMCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(PesokgjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AlturamjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(TelaIMCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(alturamjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pesokgjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(TelaIMCLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(IMCjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(imcjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        TelaIMCLayout.setVerticalGroup(
+            TelaIMCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TelaIMCLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(TelaIMCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AlturamjLabel)
+                    .addComponent(alturamjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(TelaIMCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pesokgjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PesokgjLabel))
+                .addGap(32, 32, 32)
+                .addGroup(TelaIMCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(TelaIMCLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(IMCjLabel))
+                    .addComponent(imcjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(96, 96, 96)
+                .addComponent(faixapesojLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(TelaIMCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(limparjButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(calcularimcjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+
+        alturamjTextField.putClientProperty(FlatClientProperties.STYLE, "arc: 12");
+        pesokgjTextField.putClientProperty(FlatClientProperties.STYLE, "arc: 12");
+        imcjTextField.putClientProperty(FlatClientProperties.STYLE, "arc: 12");
+        calcularimcjButton.putClientProperty(FlatClientProperties.STYLE, "arc: 12");
+        limparjButton2.putClientProperty(FlatClientProperties.STYLE, "arc: 12");
+
         CalculadoraMenu.addTab("Calculadora IMC", TelaIMC);
 
         btnSobre.setText("Sobre");
@@ -458,11 +630,15 @@ public class TelaCalculadora extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(CalculadoraMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(CalculadoraMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(CalculadoraMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(CalculadoraMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -570,6 +746,84 @@ public class TelaCalculadora extends javax.swing.JFrame {
         telaSobre.setVisible(true);
     }//GEN-LAST:event_btnSobreMouseClicked
 
+    private void alturamjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alturamjTextFieldActionPerformed
+
+    }//GEN-LAST:event_alturamjTextFieldActionPerformed
+
+    private void pesokgjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesokgjTextFieldActionPerformed
+
+    }//GEN-LAST:event_pesokgjTextFieldActionPerformed
+
+    private void imcjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imcjTextFieldActionPerformed
+
+    }//GEN-LAST:event_imcjTextFieldActionPerformed
+
+    private void calcularimcjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularimcjButtonActionPerformed
+        String pesoKgStr = pesokgjTextField.getText();
+        String alturaMStr = alturamjTextField.getText();
+
+        if (pesoKgStr.length() > 0 && alturaMStr.length() > 0) {
+            limparjButton2.setEnabled(true);
+            String FaixaPeso = "0";
+
+            try {
+                double AlturaM = Double.parseDouble(alturaMStr.replaceAll(",", "."));
+                double PesoKG = Double.parseDouble(pesoKgStr);
+                double Imc;
+
+                Imc = PesoKG / (Math.pow(AlturaM, 2));
+                imcjTextField.setText(String.format("%.2f", Imc));
+
+                if (Imc < 16) {
+                    FaixaPeso = "Magreza grave";
+                } else if (Imc >= 16 && Imc <= 16.9) {
+                    FaixaPeso = "Magreza moderada";
+                } else if (Imc >= 17 && Imc <= 18.5) {
+                    FaixaPeso = "Magreza leve";
+                } else if (Imc >= 18.6 && Imc <= 24.9) {
+                    FaixaPeso = "Peso ideal";
+                } else if (Imc >= 25 && Imc <= 29.9) {
+                    FaixaPeso = "Sobrepeso";
+                } else if (Imc >= 30 && Imc <= 34.9) {
+                    FaixaPeso = "Obesidade grau I";
+                } else if (Imc >= 35 && Imc <= 39.9) {
+                    FaixaPeso = "Obesidade grau II ou severa";
+                } else if (Imc > 40) {
+                    FaixaPeso = "Obesidade grau III ou mórbida";
+                }
+
+                faixapesojLabel.setText("Sua faixa de peso: " + FaixaPeso);
+                String historyAdd = "IMC: " + String.format("%.2f", Imc) + " - " + FaixaPeso + " - Altura: " + AlturaM + " - Peso: " + PesoKG;
+                ArrayList<String> history = calculadoraNormal.getHistory();
+                history.add("<html><b style=\"font-size: 9px\">" + historyAdd + "</b></html>");
+                calculadoraNormal.setHistory(history);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro! Utilize apenas números.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Insira os valores requeridos!");
+        }
+    }//GEN-LAST:event_calcularimcjButtonActionPerformed
+
+    private void limparjButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparjButton2ActionPerformed
+        pesokgjTextField.setText("");
+        alturamjTextField.setText("");
+        imcjTextField.setText("");
+        faixapesojLabel.setText("");
+        limparjButton2.setEnabled(false);
+
+    }//GEN-LAST:event_limparjButton2ActionPerformed
+
+    private void TelaIMCComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_TelaIMCComponentShown
+        String pesoKgStr = pesokgjTextField.getText();
+        String alturaMStr = alturamjTextField.getText();
+        if (pesoKgStr.length() > 0 || alturaMStr.length() > 0) {
+            limparjButton2.setEnabled(true);
+        } else {
+            limparjButton2.setEnabled(false);
+        }
+    }//GEN-LAST:event_TelaIMCComponentShown
+
     /**
      * @param args the command line arguments
      */
@@ -615,10 +869,14 @@ public class TelaCalculadora extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AlturamjLabel;
     private javax.swing.JTabbedPane CalculadoraMenu;
+    private javax.swing.JLabel IMCjLabel;
     private javax.swing.JMenuBar MenuBar;
-    private javax.swing.JTabbedPane TelaIMC;
+    private javax.swing.JLabel PesokgjLabel;
+    private javax.swing.JPanel TelaIMC;
     private javax.swing.JPanel TelaNormal;
+    private javax.swing.JTextField alturamjTextField;
     private javax.swing.JButton btn0;
     private javax.swing.JButton btn1;
     private javax.swing.JButton btn2;
@@ -641,6 +899,12 @@ public class TelaCalculadora extends javax.swing.JFrame {
     private javax.swing.JButton btnPerc;
     private javax.swing.JButton btnPonto;
     private javax.swing.JMenu btnSobre;
+    private javax.swing.JButton calcularimcjButton;
+    private javax.swing.JLabel faixapesojLabel;
+    private javax.swing.JTextField imcjTextField;
     public javax.swing.JTextField inputCalculator;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton limparjButton2;
+    private javax.swing.JTextField pesokgjTextField;
     // End of variables declaration//GEN-END:variables
 }

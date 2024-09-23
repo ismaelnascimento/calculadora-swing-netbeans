@@ -3,8 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Aluno/Downloads/calculadora-swing-netbeans-main/calculadora-swing-netbeans-main/src/br/edu/telas/TelaCalculadora.java</file>
-            <file>file:/C:/Users/Aluno/Downloads/calculadora-swing-netbeans-main/calculadora-swing-netbeans-main/src/br/edu/calculadora/CalculadoraNormal.java</file>
+            <file>file:/C:/Users/Software/Downloads/calculadora-swing-netbeans-main/calculadora-swing-netbeans-main/src/br/edu/calculadora/telas/TelaCalculadora.java</file>
+            <file>file:/C:/Users/Software/Downloads/calculadora-swing-netbeans-main/calculadora-swing-netbeans-main/src/br/edu/calculadora/CalculadoraNormal.java</file>
+            <file>file:/C:/Users/Software/Downloads/calculadora-swing-netbeans-main/calculadora-swing-netbeans-main/src/br/edu/calculadoraimc/Principal.java</file>
         </group>
     </open-files>
 </project-private>
