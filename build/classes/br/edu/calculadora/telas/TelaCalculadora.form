@@ -845,9 +845,6 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="alturamjTextFieldActionPerformed"/>
-              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="alturamjTextField.putClientProperty(FlatClientProperties.STYLE, &quot;arc: 12&quot;);"/>
               </AuxValues>
@@ -877,9 +874,6 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pesokgjTextFieldActionPerformed"/>
-              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="pesokgjTextField.putClientProperty(FlatClientProperties.STYLE, &quot;arc: 12&quot;);"/>
               </AuxValues>
@@ -910,9 +904,6 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="imcjTextFieldActionPerformed"/>
-              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="imcjTextField.putClientProperty(FlatClientProperties.STYLE, &quot;arc: 12&quot;);"/>
               </AuxValues>
@@ -948,7 +939,6 @@
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
                 </Property>
-                <Property name="opaque" type="boolean" value="false"/>
                 <Property name="selected" type="boolean" value="true"/>
               </Properties>
               <Events>
